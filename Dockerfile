@@ -1,7 +1,7 @@
 # https://hub.docker.com/_/golang
 FROM golang:1.9-alpine
 
-MAINTAINER Instrumentisto Team <developer@instrumentisto.com>
+MAINTAINER Tom Manville<tom@kasten.io>
 
 
 RUN apk add --update --no-cache \
