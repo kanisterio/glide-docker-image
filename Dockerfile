@@ -8,12 +8,12 @@ RUN apk add --update --no-cache \
         ca-certificates \
         # https://github.com/Masterminds/glide#supported-version-control-systems
         git mercurial subversion bzr \
-        openssh \
+        openssh bash make \
  && update-ca-certificates \
     \
  # Install build dependencies
  && apk add --no-cache --virtual .build-deps \
-        curl make \
+       curl \
     \
  # Download and unpack Glide sources
  && curl -L -o /tmp/glide.tar.gz \
@@ -36,5 +36,3 @@ RUN apk add --update --no-cache \
            $GOPATH/src/* \
            /tmp/*
 
-
-ENTRYPOINT ["/usr/local/bin/glide"]
