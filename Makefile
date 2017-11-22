@@ -11,7 +11,7 @@
 #	make release
 
 
-IMAGE_NAME := instrumentisto/glide
+IMAGE_NAME := kanisterio/build
 VERSION ?= 0.13.1-go1.9
 TAGS ?= 0.13.1-go1.9,0.13.0,0.13,latest
 
