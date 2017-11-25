@@ -3,12 +3,13 @@ FROM golang:1.9-alpine
 
 MAINTAINER Tom Manville<tom@kasten.io>
 
-
 RUN apk add --update --no-cache \
         ca-certificates \
         # https://github.com/Masterminds/glide#supported-version-control-systems
-        git mercurial subversion bzr \
-        openssh bash make \
+        bash git mercurial subversion bzr \
+        openssh make \
+ # Add go into busybox path
+ && ln -s /usr/local/go/bin/go /bin/go \
  && update-ca-certificates \
     \
  # Install build dependencies
