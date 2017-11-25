@@ -6,7 +6,7 @@ MAINTAINER Tom Manville<tom@kasten.io>
 RUN apk add --update --no-cache \
         ca-certificates \
         # https://github.com/Masterminds/glide#supported-version-control-systems
-        git mercurial subversion bzr \
+        bash git mercurial subversion bzr \
         openssh make \
  # Add go into busybox path
  && ln -s /usr/local/go/bin/go /bin/go \
