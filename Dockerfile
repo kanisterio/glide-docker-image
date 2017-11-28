@@ -6,16 +6,16 @@ MAINTAINER Tom Manville<tom@kasten.io>
 RUN apk add --update --no-cache \
         ca-certificates \
         # https://github.com/Masterminds/glide#supported-version-control-systems
-        bash git mercurial subversion bzr \
+        bash curl git libc6-compat \
         openssh make \
  # Add go into busybox path
  && ln -s /usr/local/go/bin/go /bin/go \
  && update-ca-certificates \
     \
- # Install build dependencies
- && apk add --no-cache --virtual .build-deps \
-       curl \
-    \
+ # Install kubectl
+ && curl -Lo kubectl https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl \
+ && chmod +x kubectl \
+ && mv kubectl /bin/kubectl \ 
  # Download and unpack Glide sources
  && curl -L -o /tmp/glide.tar.gz \
           https://github.com/Masterminds/glide/archive/v0.13.1.tar.gz \
@@ -31,8 +31,6 @@ RUN apk add --update --no-cache \
  && mkdir -p /usr/local/share/doc/glide \
  && cp LICENSE /usr/local/share/doc/glide/ \
     \
- # Cleanup unnecessary files
- && apk del .build-deps \
  && rm -rf /var/cache/apk/* \
            $GOPATH/src/* \
            /tmp/*
