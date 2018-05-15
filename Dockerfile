@@ -35,4 +35,4 @@ RUN apk add --update --no-cache \
            $GOPATH/src/* \
            /tmp/*
 
-COPY --from=goreleaser/goreleaser /goreleaser /usr/local/bin/
+COPY --from=goreleaser/goreleaser:v0.75 /goreleaser /usr/local/bin/
