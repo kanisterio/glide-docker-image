@@ -1,7 +1,7 @@
 # https://hub.docker.com/_/golang
 FROM golang:1.10-alpine
 
-MAINTAINER Tom Manville<tom@kasten.io>
+LABEL maintainer Tom Manville<tom@kasten.io>
 
 RUN apk add --update --no-cache \
         ca-certificates \
@@ -15,7 +15,7 @@ RUN apk add --update --no-cache \
  # Install kubectl
  && curl -Lo kubectl https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl \
  && chmod +x kubectl \
- && mv kubectl /bin/kubectl \ 
+ && mv kubectl /bin/kubectl \
  # Download and unpack Glide sources
  && curl -L -o /tmp/glide.tar.gz \
           https://github.com/Masterminds/glide/archive/v0.13.1.tar.gz \
@@ -35,3 +35,4 @@ RUN apk add --update --no-cache \
            $GOPATH/src/* \
            /tmp/*
 
+COPY --from=goreleaser/goreleaser /goreleaser /usr/local/bin/
