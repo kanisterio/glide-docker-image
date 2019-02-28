@@ -13,8 +13,8 @@
 
 
 IMAGE_NAME := kanisterio/build
-VERSION ?= 0.13.1-go1.10
-TAGS ?= 0.13.1-go1.10,0.13.0,0.13,latest
+VERSION ?= 0.13.1-go1.11
+TAGS ?= 0.13.1-go1.11,0.13.1,0.13,latest
 
 
 

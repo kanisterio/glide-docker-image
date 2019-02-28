@@ -1,5 +1,5 @@
 # https://hub.docker.com/_/golang
-FROM golang:1.9-alpine
+FROM golang:1.11-alpine
 
 LABEL maintainer Tom Manville<tom@kasten.io>
 
@@ -35,4 +35,4 @@ RUN apk add --update --no-cache \
            $GOPATH/src/* \
            /tmp/*
 
-COPY --from=goreleaser/goreleaser:v0.75 /goreleaser /usr/local/bin/
+COPY --from=goreleaser/goreleaser:v0.101.0 /bin/goreleaser /usr/local/bin/
